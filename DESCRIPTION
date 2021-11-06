@@ -1,6 +1,6 @@
 Package: eif
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: S3 Vector Class for and Estimand and It's Efficient Influene Function
+Version: 0.1.0
 Authors@R: 
       person(given = "Nicholas",
              family = "Williams",

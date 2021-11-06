@@ -11,3 +11,19 @@ eif <- function(x = double(), ic = double()) {
 is_eif <- function(x) {
     inherits(x, "eif_eif")
 }
+
+#' @export
+format.eif_eif <- function(x, ...) {
+    ic <- get_eif(x)
+    ci <- vec_data(x) + c(-1, 1) * qnorm(0.975) * sqrt(var(ic) / length(ic))
+    sprintf("%.0f [%.0f, %.0f]", vec_data(x), ci[1], ci[2])
+}
+
+#' @export
+vec_ptype_abbr.eif_eif <- function(x, ...) {
+    "eif"
+}
+
+get_eif <- function(x) {
+    attr(x, "ic", exact = TRUE)
+}
