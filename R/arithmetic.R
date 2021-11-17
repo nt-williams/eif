@@ -6,6 +6,8 @@ vec_arith.eif_eif.default <- function(op, x, y, ...) {
     stop_incompatible_op(op, x, y)
 }
 
+# x = eif and y = eif -----------------------------------------------------
+
 vec_arith.eif_eif.eif_eif <- function(op, x, y, ...) {
     switch(
         op,
@@ -36,7 +38,33 @@ eif_division <- function(x, y) {
     ic_x <- attr(x, "ic", exact = TRUE)
     ic_y <- attr(y, "ic", exact = TRUE)
     new_eif(
-        vec_data(x) / vec_data(y),
+        psi_x / psi_y,
         (ic_x / psi_y) - (psi_x * ic_y / psi_y^2)
+    )
+}
+
+eif_multiplication <- function(x, y) {
+
+}
+
+eif_exp <- function(x, y) {
+
+}
+
+# x = eif and y = numeric -------------------------------------------------
+
+vec_arith.eif_eif.numeric <- function(op, x, y, ...) {
+    switch(
+        op,
+        stop_incompatible_op()
+    )
+}
+
+# x = numeric and y = eif -------------------------------------------------
+
+vec_arith.numeric.eif <- function(op, x, y, ...) {
+    switch(
+        op,
+        stop_incompatible_op()
     )
 }
